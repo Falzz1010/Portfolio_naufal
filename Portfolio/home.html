@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your description here">
+    <meta name="keywords" content="your, keywords, here">
+    <title>Your Portfolio - Web Developer</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Include Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<style>
+    .dark-mode .divider-section {
+        background-color: #2a4365; /* Dark navy color */
+    }
+</style>
+    <style>
+        
+        /* Penyederhanaan dan Konsistensi */
+.navbar-link, .btn-primary {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card:hover {
+       transform: scale(1.05); /* Membesar saat hover */
+       transition: transform 0.3s ease-in-out;
+   }
+/* Tipografi */
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif; /* Contoh: Mengganti font */
+}
+
+/* Responsivitas */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+    }
+}
+@media (max-width: 768px) {
+        .lg-img-container {
+            display: none;
+        }
+    }
+/* Animasi dan Transisi */
+button:hover, a:hover {
+    transform: scale(1.05); /* Efek membesar saat hover */
+}
+
+/* Aksesibilitas */
+img {
+    alt: "Deskripsi gambar"; /* Pastikan semua img tags memiliki atribut alt */
+}
+        /* Custom Styles */
+        button:hover, a:hover {
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            scroll-behavior: smooth;
+        }
+
+        .navbar-link {
+            transition: color 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            color: #3b82f6;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode {
+            background-color: #1a202c;
+            color: #cbd5e0;
+        }
+
+        .dark-mode .navbar-link {
+            color: #cbd5e0; /* Mengubah warna teks link di navbar */
+        }
+
+        .dark-mode .navbar-link:hover {
+            color: #4299e1; /* Warna teks link saat dihover di navbar */
+        }
+
+        .dark-mode .project-card {
+            background-color: #2d3748; /* Warna latar belakang card proyek */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Efek bayangan lebih gelap */
+        }
+
+        .dark-mode .project-card:hover {
+            transform: translateY(-2px) scale(1.01); /* Efek scaling lebih jelas */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Efek bayangan lebih dalam */
+        }
+
+        .dark-mode .btn-primary {
+            background-color: #4299e1; /* Warna tombol utama */
+        }
+
+        .dark-mode .btn-primary:hover {
+            background-color: #2b6cb0; /* Warna tombol utama saat dihover */
+        }
+
+        .dark-mode .text-gray-800 {
+            color: #cbd5e0; /* Warna teks abu-abu lebih gelap */
+        }
+
+        .dark-mode .text-gray-700 {
+            color: #a0aec0; /* Warna teks abu-abu lebih terang */
+        }
+
+        .dark-mode .bg-gray-800 {
+            background-color: #2d3748; /* Warna latar belakang abu-abu lebih gelap */
+        }
+
+        .dark-mode .bg-gray-700 {
+            background-color: #4a5568; /* Warna latar belakang abu-abu lebih terang */
+        }
+
+        .dark-mode .border-gray-300 {
+            border-color: #4a5568; /* Warna garis tepi abu-abu lebih terang */
+        }
+
+        .dark-mode .focus\:ring-blue-500:focus {
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* Efek bayangan focus ring */
+        }
+        
+    </style>
+    <style>
+        /* Floating Dark Mode Button */
+        #dark-mode-toggle-floating {
+            /* Posisi dan ukuran */
+            width: 48px;
+            height: 48px;
+        }
+    
+        /* Efek hover dan transisi */
+        #dark-mode-toggle-floating:hover {
+            background-color: #f0f0f0;
+        }
+    
+        /* Dark Mode */
+        .dark-mode #dark-mode-toggle-floating {
+            color: #cbd5e0; /* Warna teks di dark mode */
+            background-color: #2d3748; /* Warna latar belakang di dark mode */
+        }
+    
+        .dark-mode #dark-mode-toggle-floating:hover {
+            background-color: #4a5568; /* Warna latar belakang saat dihover di dark mode */
+        }
+    </style>
+    <style>
+        .container {
+    max-width: 1200px; /* Atur lebar maksimal container */
+    padding: 0 15px; /* Padding horizontal */
+    margin: auto; /* Pusatkan container */
+}
+
+@media (min-width: 1024px) {
+    .lg:flex {
+        display: flex;
+    }
+    .lg:w-1/2 {
+        width: 50%;
+    }
+    .lg:pr-10 {
+        padding-right: 2.5rem; /* Padding kanan untuk teks */
+    }
+    .lg:pl-10 {
+        padding-left: 2.5rem; /* Padding kiri untuk gambar */
+    }
+    .lg:text-center {
+        text-align: center; /* Teks rata tengah untuk gambar */
+    }
+    .lg:items-center {
+        align-items: center; /* Vertikal rata tengah */
+    }
+    .lg:justify-center {
+        justify-content: center; /* Horizontal rata tengah */
+    }
+}
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+}
+    </style>
+    <style>
+        #messages-list {
+            list-style: none;
+            padding: 0;
+            max-height: 400px; /* Tinggi maksimal dari list pesan */
+            overflow-y: auto; /* Aktifkan scrollbar vertikal jika konten melebihi tinggi maksimal */
+        }
+    
+        #messages-list li {
+            background-color: #f3f4f6;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    
+        .message-name {
+            font-weight: bold;
+            color: #2d3748;
+        }
+    
+        .message-content {
+            font-size: 14px;
+            color: #4a5568;
+            margin-top: 5px;
+        }
+        .navbar {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-link:hover, .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+<nav class="bg-gray-800 text-white p-4 fixed w-full z-10">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo or brand -->
+        <a href="#" class="text-2xl font-bold">Portfolio</a>
+
+        <!-- Mobile menu button -->
+        <div class="lg:hidden">
+            <button id="mobile-menu-button" class="text-white focus:outline-none">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Desktop navigation -->
+        <div class="hidden lg:flex space-x-4">
+            <a href="#about-me" class="text-lg font-semibold navbar-link hover:text-blue-400 transition-colors duration-300">About Me</a>
+            <a href="#skills" class="text-lg font-semibold navbar-link hover:text-blue-400 transition-colors duration-300">Skills</a>
+            <a href="#projects" class="text-lg font-semibold navbar-link hover:text-blue-400 transition-colors duration-300">Projects</a>
+            <a href="#contact" class="text-lg font-semibold navbar-link hover:text-blue-400 transition-colors duration-300">Contact Me</a>
+            <button id="dark-mode-toggle" class="text-lg font-semibold navbar-link" onclick="toggleDarkMode()">
+                <i id="dark-mode-icon" class="fas fa-moon"></i> <!-- Initial moon icon -->
+            </button>
+            <div class="flex space-x-2">
+                <a href="https://linkedin.com/yourprofile" class="text-lg font-semibold navbar-link hover:text-blue-400 transition-colors duration-300"
+                    target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/yourusername" class="text-lg font-semibold navbar-link hover:text-blue-400 transition-colors duration-300"
+                    target="_blank"><i class="fab fa-github"></i></a>
+                <!-- tambahkan ikon media sosial lainnya sesuai kebutuhan -->
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Mobile sidebar -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50 hidden">
+        <div class="flex justify-end pt-4 pr-4">
+            <button id="close-mobile-menu-button" class="text-white focus:outline-none">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center h-full">
+            <a href="#about-me"
+                class="text-white text-lg font-semibold py-2 navbar-link animate__animated animate__fadeInLeft">About
+                Me</a>
+            <a href="#skills"
+                class="text-white text-lg font-semibold py-2 navbar-link animate__animated animate__fadeInLeft">Skills</a>
+            <a href="#projects"
+                class="text-white text-lg font-semibold py-2 navbar-link animate__animated animate__fadeInLeft">Projects</a>
+            <a href="#contact"
+                class="text-white text-lg font-semibold py-2 navbar-link animate__animated animate__fadeInLeft">Contact
+                Me</a>
+                <a href="https://linkedin.com/yourprofile" class="text-lg font-semibold navbar-link"
+                        target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/yourusername" class="text-lg font-semibold navbar-link"
+                        target="_blank"><i class="fab fa-github"></i></a>
+                    <!-- tambahkan ikon media sosial lainnya sesuai kebutuhan -->
+        </div>
+        
+    </div>
+
+    <button id="dark-mode-toggle-floating" class="fixed bottom-4 right-4 z-50 text-gray-800 dark:text-gray-300 bg-white dark:bg-gray-800 rounded-full shadow-lg p-3 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition duration-300" onclick="toggleDarkMode()">
+        <i id="dark-mode-icon-floating" class="fas fa-moon text-lg"></i>
+    </button>
+    
+<!-- Home -->
+<section id="home" class="min-h-screen flex flex-col justify-center items-center py-10 bg-gray-900 text-white text-center home-section relative">
+    <div class="container mx-auto flex flex-col lg:flex-row items-center">
+        <!-- Text container -->
+        <div class="w-full lg:w-1/2 lg:order-1 flex-shrink-0 animate__animated animate__fadeInLeft px-4 lg:px-0">
+            <h1 class="text-4xl lg:text-6xl font-bold mb-2 lg:mb-4 text-gray-200">
+                <span id="typed"></span>
+            </h1>
+            <p class="text-lg lg:text-xl text-gray-300 mb-4 lg:mb-6">Professionally showcasing my work and projects.</p>
+            <div class="space-x-2 lg:space-x-4">
+                <a href="#about-me" class="btn-primary bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 lg:py-3 px-4 lg:px-6 rounded-lg shadow-lg transition duration-300">Learn More</a>
+                <a href="#contact" class="btn-primary bg-green-600 hover:bg-green-800 text-white font-semibold py-2 lg:py-3 px-4 lg:px-6 rounded-lg shadow-lg transition duration-300">Hire Me</a>
+            </div>
+        </div>
+        <!-- Image container -->
+        <div class="w-full lg:w-1/2 lg:text-center lg:order-2 flex-grow animate__animated animate__fadeInRight lg-img-container">
+            <img src="img1-removebg-preview.png" alt="Showcase Image" class="rounded-lg shadow-xl max-w-xs lg:max-w-sm mx-auto">
+        </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 p-2 lg:p-4 text-center text-xs lg:text-sm animate-bounce">
+        Scroll to discover more
+        <i class="fas fa-arrow-down"></i>
+    </div>
+</section>
+
+<!-- About Me Section -->
+<section id="about-me" class="min-h-screen flex flex-col justify-center items-center mb-12 animate__animated animate__fadeInLeft" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container mx-auto px-4 lg:flex lg:items-center lg:justify-center"> <!-- Ubah justify-between menjadi justify-center -->
+        <!-- Text Container -->
+        <div class="w-full lg:w-2/3 lg:px-10 py-4 text-center"> <!-- Ubah lebar dan padding, tambahkan text-center -->
+            <h2 class="text-4xl font-bold mb-4 text-gray-800 dark:text-white">Tentang Saya</h2>
+            <pre class="bg-gray-800 p-4 rounded-lg shadow-lg text-lg mb-4" style="color: #dcdcaa; white-space: pre-wrap;"> <!-- Tambahkan white-space: pre-wrap; -->
+<code class="language-javascript">
+<span style="color: #569cd6;">/**</span>
+<span style="color: #569cd6;"> * Tentang Saya</span>
+<span style="color: #569cd6;"> * Nama:</span> <span style="color: #ce9178;">Naufal Rizky Putera</span>
+<span style="color: #569cd6;"> * Peran:</span> <span style="color: #ce9178;">Web Developer</span>
+<span style="color: #569cd6;"> * Deskripsi:</span> 
+<span style="color: #569cd6;"> * Saya memiliki kegemaran dalam pemrograman dan menciptakan algoritma yang efisien.</span>
+<span style="color: #569cd6;"> * Saya spesialisasi dalam pengembangan full-stack dan senang mempelajari teknologi baru.</span>
+<span style="color: #569cd6;"> */</span>
+
+<span style="color: #dcdcaa;">const</span> <span style="color: #9cdcfe;">tentangSaya</span> <span style="color: #dcdcaa;">= {</span>
+    <span style="color: #9cdcfe;">nama</span><span style="color: #dcdcaa;">:</span> <span style="color: #ce9178;">"Naufal Rizky Putera"</span><span style="color: #dcdcaa;">,</span>
+    <span style="color: #9cdcfe;">peran</span><span style="color: #dcdcaa;">:</span> <span style="color: #ce9178;">"Pengembang Perangkat Lunak"</span><span style="color: #dcdcaa;">,</span>
+    <span style="color: #9cdcfe;">deskripsi</span><span style="color: #dcdcaa;">:</span> <span style="color: #dcdcaa;">[</span>
+        <span style="color: #ce9178;">"Saya memiliki kegemaran dalam pemrograman dan menciptakan algoritma yang efisien."</span><span style="color: #dcdcaa;">,</span>
+        <span style="color: #ce9178;">"Saya spesialisasi dalam pengembangan full-stack dan senang mempelajari teknologi baru."</span>
+    <span style="color: #dcdcaa;">],</span>
+    <span style="color: #9cdcfe;">keahlian</span><span style="color: #dcdcaa;">:</span> <span style="color: #dcdcaa;">[</span><span style="color: #ce9178;">"JavaScript"</span><span style="color: #dcdcaa;">, </span><span style="color: #ce9178;">"Python"</span><span style="color: #dcdcaa;">, </span><span style="color: #ce9178;">"Java"</span><span style="color: #dcdcaa;">, </span><span style="color: #ce9178;">"React"</span><span style="color: #dcdcaa;">, </span><span style="color: #ce9178;">"Node.js"</span><span style="color: #dcdcaa;">],</span>
+    <span style="color: #9cdcfe;">hobi</span><span style="color: #dcdcaa;">:</span> <span style="color: #dcdcaa;">[</span><span style="color: #ce9178;">"Pemrograman"</span><span style="color: #dcdcaa;">, </span><span style="color: #ce9178;">"Membaca"</span><span style="color: #dcdcaa;">, </span><span style="color: #ce9178;">"Bermain Game"</span><span style="color: #dcdcaa;">]</span>
+<span style="color: #dcdcaa;">};</span>
+
+<span style="color: #dcdcaa;">console.log</span><span style="color: #dcdcaa;">(</span><span style="color: #ce9178;">"Halo, dunia! Nama saya adalah "</span> <span style="color: #dcdcaa;">+</span> <span style="color: #9cdcfe;">tentangSaya</span><span style="color: #dcdcaa;">.</span><span style="color: #9cdcfe;">nama</span><span style="color: #dcdcaa;">);</span>
+</code>
+</pre>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Divider Section -->
+<div class="divider-section bg-gray-200 py-9 text-center">
+</div>
+
+
+<!-- Skills Section -->
+<section id="skills" class="min-h-screen flex flex-col justify-center items-center mb-12" data-aos="fade-up" data-aos-duration="1000">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-6 text-center animate__animated animate__fadeInUp">Skills</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Skill Card -->
+            <div class="card p-6 shadow-xl rounded-xl transition duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl hover:bg-gradient-to-r from-red-500 to-red-300">
+                <div class="icon bg-red-100 p-4 rounded-full mb-3 transition duration-300 ease-in-out hover:rotate-12">
+                    <i class="fab fa-html5 fa-3x text-red-600 hover:text-red-800"></i>
+                </div>
+                <h3 class="font-bold text-xl hover:text-red-800">HTML</h3>
+                <p>Advanced</p>
+            </div>
+            <!-- Repeat for other skills, adjust icons and text as necessary -->
+            <div class="card p-6 shadow-xl rounded-xl transition duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl hover:bg-gradient-to-r from-blue-500 to-blue-300">
+                <div class="icon bg-blue-100 p-4 rounded-full mb-3 transition duration-300 ease-in-out hover:rotate-12">
+                    <i class="fab fa-css3-alt fa-3x text-blue-500 hover:text-blue-700"></i>
+                </div>
+                <h3 class="font-bold text-xl hover:text-blue-700">CSS</h3>
+                <p>Advanced</p>
+            </div>
+            <div class="card p-6 shadow-xl rounded-xl transition duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl hover:bg-gradient-to-r from-yellow-500 to-yellow-300">
+                <div class="icon bg-yellow-100 p-4 rounded-full mb-3 transition duration-300 ease-in-out hover:rotate-12">
+                    <i class="fab fa-js-square fa-3x text-yellow-500 hover:text-yellow-700"></i>
+                </div>
+                <h3 class="font-bold text-xl hover:text-yellow-700">JavaScript</h3>
+                <p>Intermediate</p>
+            </div>
+            <div class="card p-6 shadow-xl rounded-xl transition duration-500 ease-in-out transform hover:-translate-y-2 hover:shadow-2xl hover:bg-gradient-to-r from-blue-400 to-blue-200">
+                <div class="icon bg-blue-100 p-4 rounded-full mb-3 transition duration-300 ease-in-out hover:rotate-12">
+                    <i class="fab fa-react fa-3x text-blue-400 hover:text-blue-600"></i>
+                </div>
+                <h3 class="font-bold text-xl hover:text-blue-600">React</h3>
+                <p>Intermediate</p>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+    </div>
+</section>
+
+<!-- Divider Section -->
+<div class="divider-section bg-gray-200 py-9 text-center">
+</div>
+
+<!-- Projects Section -->
+<section id="projects" class="min-h-screen flex flex-col justify-center items-center mb-12 pt-12" data-aos="fade-up" data-aos-duration="1000">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <h2 class="text-4xl font-bold mb-6 text-center text-gray-800">Projects</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg transition-shadow duration-500 hover:shadow-xl">
+                <img src="https://via.placeholder.com/400x200" alt="Project Image" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black bg-opacity-70 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div class="text-center p-4">
+                        <h3 class="text-xl font-bold text-white mb-2">E-commerce Website</h3>
+                        <p class="text-gray-200">Full-stack site with React, Node.js, MongoDB.</p>
+                        <button onclick="openModal('modal1')" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors duration-300">View More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg transition-shadow duration-500 hover:shadow-xl">
+                <img src="https://via.placeholder.com/400x200" alt="Project Image" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black bg-opacity-70 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div class="text-center p-4">
+                        <h3 class="text-xl font-bold text-white mb-2">Portfolio Website</h3>
+                        <p class="text-gray-200">Showcasing my professional journey and projects.</p>
+                        <button onclick="openModal('modal2')" class="mt-4 inline-block bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300">View More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg transition-shadow duration-500 hover:shadow-xl">
+                <img src="https://via.placeholder.com/400x200" alt="Project Image" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black bg-opacity-70 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div class="text-center p-4">
+                        <h3 class="text-xl font-bold text-white mb-2">Portfolio Website</h3>
+                        <p class="text-gray-200">Showcasing my professional journey and projects.</p>
+                        <button onclick="openModal('modal3')" class="mt-4 inline-block bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300">View More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 4 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-lg transition-shadow duration-500 hover:shadow-xl">
+                <img src="https://via.placeholder.com/400x200" alt="Project Image" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black bg-opacity-70 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div class="text-center p-4">
+                        <h3 class="text-xl font-bold text-white mb-2">Portfolio Website</h3>
+                        <p class="text-gray-200">Showcasing my professional journey and projects.</p>
+                        <button onclick="openModal('modal4')" class="mt-4 inline-block bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-300">View More</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more projects as needed -->
+        </div>
+    </div>
+</section>
+
+<!-- Divider Section -->
+<div class="divider-section bg-gray-200 py-9 text-center">
+</div>
+
+<!-- Contact Section -->
+<section id="contact" class="min-h-screen flex flex-col justify-center items-center mb-12 animate__animated animate__fadeIn">
+    <div class="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-xl p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <h2 class="text-3xl font-bold mb-6 text-center text-black dark:text-white">Contact Me</h2>
+            <form class="text-center" onsubmit="handleSubmit(event)">
+                <input type="text" name="name" placeholder="Your Name"
+                    class="mb-4 p-4 w-full rounded-lg border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-blue-500 dark:focus:ring-blue-300 transition duration-300 ease-in-out shadow-sm">
+                <input type="email" name="email" placeholder="Your Email"
+                    class="mb-4 p-4 w-full rounded-lg border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-blue-500 dark:focus:ring-blue-300 transition duration-300 ease-in-out shadow-sm">
+                <textarea name="message" placeholder="Your Message"
+                    class="mb-4 p-4 w-full rounded-lg border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-blue-500 dark:focus:ring-blue-300 transition duration-300 ease-in-out shadow-sm"
+                    rows="4"></textarea>
+                <button type="submit"
+                    class="btn btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out flex items-center justify-center">
+                    <i class="fas fa-paper-plane mr-2"></i> Send
+                </button>
+            </form>
+        </div>
+        <div>
+            <!-- Message Display Area -->
+            <h3 class="text-2xl font-bold text-center text-black dark:text-white">Incoming Messages</h3>
+            <ul id="messages-list" class="list-disc pl-5 text-gray-800 dark:text-gray-200 overflow-y-auto max-h-96">
+                <!-- Messages will be appended here -->
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <div>
+        <p class="text-lg font-bold">Naufal rizky</p>
+        <p class="text-sm">Web Developer & Designer</p>
+      </div>
+      <div>
+        <ul class="flex space-x-4">
+          <li><a href="#" class="text-gray-300 hover:text-white">Home</a></li>
+          <li><a href="#about" class="text-gray-300 hover:text-white">About</a></li>
+          <li><a href="#portfolio" class="text-gray-300 hover:text-white">Portfolio</a></li>
+          <li><a href="#contact" class="text-gray-300 hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-sm">&copy; 2024 Your Company. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+
+    <!-- JavaScript for mobile menu functionality -->
+    <script>
+        AOS.init();
+      </script>
+      
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        document.getElementById('close-mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkModeIcon = document.getElementById('dark-mode-icon');
+            const darkModeIconFloating = document.getElementById('dark-mode-icon-floating');
+
+            body.classList.toggle('dark-mode');
+
+            // Toggle icon between moon and sun
+            if (body.classList.contains('dark-mode')) {
+                darkModeIcon.classList.remove('fa-moon');
+                darkModeIcon.classList.add('fa-sun');
+                darkModeIconFloating.classList.remove('fa-moon');
+                darkModeIconFloating.classList.add('fa-sun');
+            } else {
+                darkModeIcon.classList.remove('fa-sun');
+                darkModeIcon.classList.add('fa-moon');
+                darkModeIconFloating.classList.remove('fa-sun');
+                darkModeIconFloating.classList.add('fa-moon');
+            }
+        }
+    </script>
+  
+  <script>
+    function handleSubmit(event) {
+        event.preventDefault(); // Mencegah perilaku default form submit
+        const form = event.target;
+        const data = new FormData(form);
+
+        // Validasi manual untuk memastikan bahwa semua field telah diisi
+        if (!data.get('name') || !data.get('email') || !data.get('message')) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please fill out all required fields.',
+            });
+            return; // Menghentikan fungsi jika validasi gagal
+        }
+
+        // Menggunakan fetch untuk mengirim data form
+        fetch('https://script.google.com/macros/s/AKfycbx7LYBVFVChKuOyBK5Pb9oWRunxArlM1EdaeRS7iy7M11qC59oeGx5f9S0FrwpJzCso/exec', {
+            method: 'POST',
+            body: data
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok'); // Menangani respons yang tidak berhasil
+            }
+            return response.json(); // Parsing JSON dari respons
+        })
+        .then(data => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Message Sent!',
+                text: 'Your message has been sent successfully.',
+            });
+            form.reset(); // Reset form setelah pengiriman berhasil
+        })
+        .catch(error => {
+            console.error('Error:', error); // Menampilkan error di konsol
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'There was an error sending your message.',
+            });
+        });
+    }
+</script>
+<script>
+    var typed = new Typed('#typed', {
+        strings: [
+            "Welcome to My Portfolio",
+            "My Name is Naufal Rizky",
+            
+        ],
+        typeSpeed: 60,
+        backSpeed: 30,
+        startDelay: 500,
+        backDelay: 1500,
+        loop: true,
+        loopCount: Infinity,
+        showCursor: true,
+        cursorChar: '|'
+    });
+</script>
+<script>
+    function fetchMessages() {
+      fetch('https://script.google.com/macros/s/AKfycbzkfT7SXWRsLe7eJkL95ZOum3owdD709AHCzlh5XBRuEiSo2dVe5pjwkrRuv5Lp8WFsfA/exec') // Ganti dengan URL deployment Anda
+        .then(response => response.json())
+        .then(data => {
+          const messagesList = document.getElementById('messages-list');
+          messagesList.innerHTML = ''; // Bersihkan list lama
+          data.forEach(msg => {
+            const li = document.createElement('li');
+            li.innerHTML = `<span class="message-name">${msg.name}</span><div class="message-content">${msg.message}</div>`;
+            messagesList.appendChild(li);
+          });
+        })
+        .catch(error => console.error('Error loading messages:', error));
+    }
+    
+    // Panggil fungsi saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', fetchMessages);
+    // Set interval untuk memperbarui pesan setiap 30 detik
+    setInterval(fetchMessages, 30000); // 30000 ms = 30 detik
+</script>
+<!-- Smooth Scroll -->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    document.querySelectorAll('.form-input').forEach(input => {
+    input.addEventListener('blur', function() {
+        if (!this.value) {
+            this.classList.add('error');
+            this.nextElementSibling.innerText = 'This field is required';
+        } else {
+            this.classList.remove('error');
+            this.nextElementSibling.innerText = '';
+        }
+    });
+});
+</script>
+</body>
+
+</html>
